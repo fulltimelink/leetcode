@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 	"unique"
 )
@@ -63,4 +64,12 @@ func compareTestStructData1(u1 unique.Handle[testStructData], u2 unique.Handle[t
 }
 func compareTestStructData(c1, c2 testStructData) bool {
 	return c1 == c2
+}
+
+func TestMap(t *testing.T) {
+	a := make(map[int]struct{})
+	a[1] = struct{}{}
+	fmt.Println(a[1])
+	fmt.Println(a[2])
+
 }
