@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
-	"slices"
-	"sort"
+	"learngo/patterns/factory/abstract_factory"
+	"log"
 )
 
 func main() {
@@ -37,11 +36,18 @@ func main() {
 		fmt.Println(x, y)
 	}*/
 
-	s := []int{1, 1, 1, 1, 4, 6, 4, 6, 7, 7, 7, 7, 9}
+	/*s := []int{1, 1, 1, 1, 4, 6, 4, 6, 7, 7, 7, 7, 9}
 	sort.Ints(s)
 	r := slices.Compact(s)
 	fmt.Println(r, len(r), cap(r))
 	r2 := slices.Grow(r, 10)
-	fmt.Println(r2, len(r2), cap(r2))
+	fmt.Println(r2, len(r2), cap(r2))*/
+
+	rf := abstract_factory.GetWeaponFactory("red")
+	if rf == nil {
+		log.Fatalln("nil factory")
+	}
+	rf.MakeShortGun("ak47").Shoot()
+	rf.MakeShortGun("musket").Shoot()
 
 }
