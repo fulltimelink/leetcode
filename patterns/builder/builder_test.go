@@ -1,16 +1,15 @@
-package main
+package builder
 
 import (
 	"fmt"
-	"learngo/patterns/builder"
+	"testing"
 )
 
-func main() {
+func TestNewBuilder(t *testing.T) {
+	normalBuilder := GetHouseBuilder("normal")
+	iglooBuilder := GetHouseBuilder("igloo")
 
-	normalBuilder := builder.GetHouseBuilder("normal")
-	iglooBuilder := builder.GetHouseBuilder("igloo")
-
-	director := builder.NewDirector(normalBuilder)
+	director := NewDirector(normalBuilder)
 	normalHouse := director.BuildHouse()
 
 	fmt.Printf("Normal House Door Type: %s\n", normalHouse.DoorType)
@@ -23,5 +22,4 @@ func main() {
 	fmt.Printf("\nIgloo House Door Type: %s\n", iglooHouse.DoorType)
 	fmt.Printf("Igloo House Window Type: %s\n", iglooHouse.WindowType)
 	fmt.Printf("Igloo House Num Floor: %d\n", iglooHouse.Floor)
-
 }
